@@ -1,28 +1,22 @@
-Descriere Proiect
-Acest proiect este un API REST pentru jocul "Piatră, Hârtie, Foarfecă" implementat cu FastAPI. Jocul include autentificare, suport pentru mai mulți utilizatori și funcționalități pentru a inițializa un joc nou, a face mutări și a verifica rezultatul.
 
-Caracteristici
+Acest proiect este un API REST pentru jocul "Piatră, Hârtie, Foarfecă" implementat cu FastAPI. Jocul include autentificare, suport pentru mai mulți utilizatori și funcționalități pentru a incepe un joc nou, a face mutări și a verifica rezultatul.
+
+Caracteristici:
 Crearea utilizatorilor cu nume de utilizator și parolă.
 Autentificare bazată pe utilizator pentru inițializarea și continuarea jocurilor.
 Alegere aleatorie a mutării calculatorului.
-Logica jocului "cel mai bun din trei" (primul care ajunge la două puncte câștigă).
+Logica jocului "best out of three" (primul care ajunge la două puncte câștigă).
 Păstrarea scorului și a stării jocului în baza de date.
 Teste unitare pentru validarea funcționalităților API-ului.
-Tehnologii Folosite
+Tehnologii Folosite:
 FastAPI: Framework pentru dezvoltarea API-ului REST.
 SQLAlchemy: ORM pentru gestionarea bazei de date.
 SQLite: Baza de date utilizată (pentru simplitate).
 pytest: Pentru testarea unităților.
 Instalare și Configurare
 
-1. Clonare proiect
 
-
-
-git clone https://github.com/numele-tau/joc-piatra-hartie-foarfeca.git
-cd joc-piatra-hartie-foarfeca
-
-2. Configurare mediu virtual
+. Configurare mediu virtual
 
 
 
@@ -30,12 +24,12 @@ python3 -m venv venv
 source venv/bin/activate  # Pentru Linux/Mac
 venv\Scripts\activate     # Pentru Windows
 
-3. Instalare dependințe
+. Instalare dependințe
 
 
 
 pip install -r requirements.txt
-4. Configurare baza de date
+. Configurare baza de date
 Baza de date va fi generată automat. Dacă folosești SQLite, fișierul bazei de date (app.db) va fi creat în directorul proiectului.
 
 Utilizare
@@ -48,7 +42,7 @@ uvicorn main:app --reload
 API-ul va fi disponibil la: http://127.0.0.1:8000
 
 Testare API
-Poți folosi Swagger UI pentru a testa endpoint-urile, disponibil la: http://127.0.0.1:8000/docs
+Se poate folosi Swagger UI pentru a testa endpoint-urile
 
 Endpoint-uri Disponibile
 POST /user_create
@@ -132,12 +126,5 @@ Exemple:
 Creare utilizator.
 Start joc.
 Mutări și verificarea câștigătorului.
-Cum rulez testele?
-Pentru a rula toate testele:
 
 
-pytest
-Îmbunătățiri posibile
-Adăugarea autentificării cu token-uri JWT.
-Extinderea API-ului pentru istoric jocuri.
-Suport pentru mai multe tipuri de jocuri.
