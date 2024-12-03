@@ -2,6 +2,7 @@ from fastapi import FastAPI, Depends, HTTPException
 from sqlalchemy.orm import Session
 from models import User, Game
 from database import SessionLocal
+from pydantic import BaseModel
 import random
 
 app = FastAPI()
@@ -16,13 +17,19 @@ def get_db():
         db.close()
 
 
+# Model Pydantic pentru a prelua datele de la client
+class UserCreateRequest(BaseModel):
+    username: str
+    password: str
+
+
 # Endpoint: Creare utilizator
 @app.post("/user_create")
-def user_create(username: str, password: str, db: Session = Depends(get_db)):
-    existing_user = db.query(User).filter(User.username == username).first()
+def user_create(user: UserCreateRequest, db: Session = Depends(get_db)):
+    existing_user = db.query(User).filter(User.username == user.username).first()
     if existing_user:
         raise HTTPException(status_code=400, detail="User already exists")
-    new_user = User(username=username, password=password)
+    new_user = User(username=user.username, password=user.password)
     db.add(new_user)
     db.commit()
     return {"message": "User created successfully"}
@@ -75,3 +82,4 @@ def move(game_id: int, player_move: str, db: Session = Depends(get_db)):
         return {"winner": "ai", "score": {"player": game.score_player, "ai": game.score_ai}}
 
     return {"result": result, "ai_move": ai_move, "score": {"player": game.score_player, "ai": game.score_ai}}
+
