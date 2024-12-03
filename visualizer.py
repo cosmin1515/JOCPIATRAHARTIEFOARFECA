@@ -50,3 +50,4 @@ if "game_id" in st.session_state:
                 st.write(f"Scor curent: {result['score']}")
         else:
             st.error(response.json().get("detail", "Eroare la trimiterea mutării."))
+
