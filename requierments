@@ -1,0 +1,16 @@
+FastAPI: Framework pentru dezvoltarea API-ului REST.
+SQLAlchemy: ORM pentru gestionarea bazei de date.
+SQLite: Baza de date utilizată (pentru simplitate).
+pytest: Pentru testarea unităților.
+uvicorn: Serverul ASGI utilizat pentru a rula aplicația FastAPI.
+
+
+Configurare mediu virtual
+
+
+python3 -m venv venv
+source venv/bin/activate - Pentru Linux/Mac
+venv\Scripts\activate   -  Pentru Windows
+
+
+uvicorn main:app --reload
